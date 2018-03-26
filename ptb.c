@@ -24,12 +24,15 @@
 // to respond to - if the packet is larger than 1280 then the
 // routing synthesis and sends an ICMPv6 PTB message
 //
+// You may need to install the libpcap library
+//   apt-get install libpcap-dev
+//
 // the utility uses raw ether sockets and to initialise this
 // it listens for RA messages to load the router next hop
 // MAC address to perform the ther framing
 //
 // linux debian build:
-//   cc -lpcap -o ptb ptb.c
+//   cc -o ptb ptb.c -lpcap
 //
 // Geoff Huston, APNIC, 2016
 //
@@ -58,6 +61,7 @@
 #include <bits/socket.h>
 #include <pcap.h>
 #include <errno.h>
+#include <time.h>
 
 typedef struct _pktinfo6 pktinfo6;
 struct _pktinfo6 {
